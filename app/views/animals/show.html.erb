@@ -1,0 +1,25 @@
+<%= link_to "Back", animals_path %>
+
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <%= cl_image_tag @animal.photo.key, height: 300, width: 400, gravity: :auto, crop: :fill %>
+      <h1> <%= @animal.name %> </h1>
+      <p>Espécie: <%= @animal.specie %></p>
+      <p>Porte: <%= @animal.size %></p>
+      <p>Localização: <%= @animal.location.capitalize %></p>
+      <p>Sexo: <%= @animal.sex %></p>
+      <p>Castrado? <%= @animal.health_castrated %></p>
+      <p>Vacinado? <%= @animal.health_vaccinated %></p>
+      <p>Vermifugado? <%= @animal.health_dewormed %></p>
+      <p>Necessecita de cuidados especiais? <%= @animal.health_special %></p>
+      <p>Descrição: <%= @animal.description %></p>
+
+      <% if @animal.owner == current_user %>
+        <%= link_to "edit", edit_animal_path(@animal) %>
+        <%= link_to "delete", animal_path(@animal), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
+    </div>
+  </div>
+</div>

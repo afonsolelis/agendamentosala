@@ -1,0 +1,43 @@
+<div class="banner">
+  <%= image_tag("logo_g.jpg") %>
+    <div class="container">
+      <h1>Eles estão esperando um novo lar <strong>&hearts;&hearts;&hearts;</strong></h1>
+    <%= form_tag("/search", method: "get") do %>
+      <%= label_tag(:q, "Você procura:") %>
+      <%= select_tag "specie", options_for_select([ "Gato", "Cachorro" ], "Cachorro") %>
+      <%= submit_tag("Miau!") %>
+    <% end %>
+    </div>
+  </div>
+  <div class="animal_board">
+    <div class="cards-container">
+  <div class="cards">
+    <% @animals.each do |animal| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path animal.photo.key, height: 300, width: 400, gravity: :auto, crop: :fill %>')">
+        <%= link_to animal.name.capitalize, animal_path(animal) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+  </div>
+  <div class="container">
+    <h1 class="text-warning font-weight-bold" align="center" style="margin-top: 76px;">Por que adotar?</h1>
+    <div class="row why-adopt">
+      <div class="col-md-4 clearfix">
+        <%= image_tag "family.png", class: "img_home" %>
+        <p align="justify"><span>Ao adotar, você ajuda a reduzir o número de cães e gatos abandonados.</span>
+        Os animais de rua já passaram por muito sofrimento e tudo o que precisam é
+        de um lar para serem felizes de verdade!</p>
+      </div>
+      <div class="col-md-4 clearfix">
+         <%= image_tag "animals2.jpg", class: "img_home" %>
+        <p align="justify"><span>E não há recompensa maior</span> do que vê-los se transformarem naquela coisinha
+        alegre e saudável depois de receberem uma boa dose de cuidado e carinho.</p>
+      </div>
+      <div class="col-md-4 clearfix">
+         <%= image_tag "animals3.jpg", class: "img_home" %>
+        <p align="justify"><span>Pensando bem, a pergunta é outra:</span> se você pode mudar o destino de um animal carente,
+        por que você não faria isso?</p>
+      </div>
+    </div>
+  </div>
